@@ -1,21 +1,63 @@
 import React, { useState } from 'react';
 import type { ISkill } from '../Types/Skill-Data';
+import { toast } from 'react-toastify';
 
 interface SkillProops {
   SkillData: ISkill[];
 }
 
 const SkillCard = ({ SkillData }: SkillProops) => {
-  console.log(SkillData);
   const [selectedSkill, setSelectedSkill] = useState<ISkill[]>([]);
   const handleAddClick = (skill: ISkill) => {
     setSelectedSkill([...selectedSkill, skill]);
+    toast.success(
+      <div className="flex items-center gap-2">
+        <img src={skill.icon} alt="logo" className="h-6 w-6" />
+        <h4>{`${skill.name} added to your stack!`}</h4>
+      </div>,
+      {
+        position: 'bottom-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      }
+    );
   };
-  const handleRemoveSkill = (id: string) => {
+  const handleRemoveSkill = (id: string, skill: ISkill) => {
     setSelectedSkill(selectedSkill.filter((skill) => skill.id !== id));
+    toast.error(
+      <div className="flex items-center gap-2">
+        <img src={skill.icon} alt="logo" className="h-6 w-6" />
+        <h4>{`${skill.name} added to your stack!`}</h4>
+      </div>,
+      {
+        position: 'bottom-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      }
+    );
   };
   const handleRemoveAll = () => {
     setSelectedSkill([]);
+    toast.error(`All Stack Is Remove`,{
+        position: 'bottom-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
   };
   return (
     <div className="lg:flex lg:justify-center lg:flex-row lg:items-start flex flex-col items-center justify-center">
@@ -25,7 +67,7 @@ const SkillCard = ({ SkillData }: SkillProops) => {
             return item.id === skill.id;
           });
           return (
-            <div key={skill.id} className="w-full rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm">
+            <div key={skill.id} className="w-full rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm ">
               {/* Top Section */}
               <div className="flex items-start justify-between">
                 {/* Icon */}
@@ -83,7 +125,7 @@ const SkillCard = ({ SkillData }: SkillProops) => {
           );
         })}
       </div>
-      <div className="lg:w-[35%] lg:my-0 lg:ml-0 w-130 my-5 ml-20">
+      <div className="lg:w-[35%] lg:my-0 lg:ml-0 w-130 my-5 ml-20 sticky top-25 z-50 bg-white">
         <div className="rounded-[28px] border border-slate-100 bg-white px-10 py-11 shadow-[0_3px_8px_rgba(15,23,42,0.08)] mr-30 ml-10">
           <h2 className="text-xl lg:text-lg font-bold leading-tight text-slate-900">Your Stack</h2>
 
@@ -95,7 +137,7 @@ const SkillCard = ({ SkillData }: SkillProops) => {
 
           {selectedSkill.length === 0 ? (
             // Empty
-            <div className="mt-7 h-20 flex items-center justify-center rounded-[22px] border-2 border-dashed border-slate-200">
+            <div className="mt-7 h-30 flex items-center justify-center rounded-[22px] border-2 border-dashed border-slate-200">
               <p className="text-sm text-slate-400">Your stack is empty.</p>
             </div>
           ) : (
@@ -116,7 +158,7 @@ const SkillCard = ({ SkillData }: SkillProops) => {
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleRemoveSkill(skill.id)}
+                    onClick={() => handleRemoveSkill(skill.id, skill)}
                     className="text-xl text-slate-400 hover:text-red-500"
                   >
                     ×

@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import Hero from "./Components/Hero"
-import Main from "./Components/Main";
 import Nav from "./Components/Nav"
 import type { ISkill } from "./Types/Skill-Data";
+import MainBody from "./Components/Main-Body";
 
 const SkillDataFetch = async():Promise<ISkill[]> => {
   const res = await fetch('../public/Skill-Data.json');
@@ -17,7 +17,7 @@ function App() {
       <Nav></Nav>
       <Hero></Hero>
       <Suspense fallback={<h1>Loading...</h1>}>
-          <Main  SkillDataPromise={SkillDataPromise}></Main>
+          <MainBody  SkillDataPromise={SkillDataPromise}></MainBody>
       </Suspense>
     </>
   )

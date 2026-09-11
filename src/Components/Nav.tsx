@@ -4,8 +4,8 @@ import { IoIosMenu } from 'react-icons/io';
 
 const Nav = () => {
     return (
-        <div>
-            <div className='md:my-10 md:flex md:justify-between md:items-center lg:flex lg:justify-between lg:items-center lg:mx-30 lg:my-5 flex justify-between items-center mx-6 my-4'>
+        <div className='fixed top-0 left-0 w-full z-50 bg-white'>
+            <div className=' md:flex md:justify-between md:items-center lg:flex lg:justify-between lg:items-center lg:mx-30 flex justify-between items-center mx-6 py-4'>
                 <div className='lg:hidden md:hidden text-2xl '>
                     <IoIosMenu />
                 </div>

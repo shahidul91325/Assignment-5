@@ -4,7 +4,7 @@ import SkillCard from './SkillCard';
 export interface PromiseProops {
     SkillDataPromise:Promise<ISkill[]>
 }
-const Main = ({SkillDataPromise}:PromiseProops) => {
+const MainBody = ({SkillDataPromise}:PromiseProops) => {
     const data = use(SkillDataPromise);
     // console.log(data)
     return (
@@ -18,4 +18,4 @@ const Main = ({SkillDataPromise}:PromiseProops) => {
     );
 };
 
-export default Main;
+export default MainBody;
