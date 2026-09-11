@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { ISkill } from '../Types/Skill-Data';
-import { toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 
 interface SkillProops {
   SkillData: ISkill[];
@@ -23,7 +23,8 @@ const SkillCard = ({ SkillData }: SkillProops) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'light',
+        theme:"light",
+        transition: Bounce,
       }
     );
   };
@@ -42,22 +43,24 @@ const SkillCard = ({ SkillData }: SkillProops) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'light',
+        theme:"light",
+        transition: Bounce,
       }
     );
   };
   const handleRemoveAll = () => {
     setSelectedSkill([]);
-    toast.error(`All Stack Is Remove`,{
-        position: 'bottom-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+    toast.error(`All Stack Is Remove`, {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme:"light",
+      transition: Bounce,
+    });
   };
   return (
     <div className="lg:flex lg:justify-center lg:flex-row lg:items-start flex flex-col items-center justify-center">
@@ -67,7 +70,10 @@ const SkillCard = ({ SkillData }: SkillProops) => {
             return item.id === skill.id;
           });
           return (
-            <div key={skill.id} className="w-full rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm ">
+            <div
+              key={skill.id}
+              className={`w-full rounded-[30px] ${isSelected ? 'border-2 border-[#da2b2ebb]' : 'border border-slate-200'} bg-white p-5 shadow-sm `}
+            >
               {/* Top Section */}
               <div className="flex items-start justify-between">
                 {/* Icon */}
@@ -117,9 +123,9 @@ const SkillCard = ({ SkillData }: SkillProops) => {
                 onClick={() => handleAddClick(skill)}
                 disabled={isSelected}
                 type="button"
-                className=" lg:mt-8 lg:w-60 md:w-60 rounded-2xl bg-slate-950 lg:py-2 lg:text-sm font-medium text-white transition hover:bg-slate-800 w-60 py-2 lg:ml-0 ml-10 mt-5 "
+                className={`lg:mt-8 lg:w-60 md:w-60 rounded-2xl lg:py-2 lg:text-sm font-medium text-white transition w-60 py-2 lg:ml-0 ml-10 mt-5 ${isSelected ? 'bg-linear-to-r from-[#e4400e] from-20%- via-[#F04145] via-30% to-[#4d0bc0] to-70%' : 'bg-black'}`}
               >
-                {isSelected ? 'Added' : 'Add To Stack'}
+                {isSelected ? '✓ Added To Stack' : 'Add To Stack'}
               </button>
             </div>
           );
