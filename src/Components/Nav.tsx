@@ -23,7 +23,7 @@ const Nav = () => {
                 </div>
                 <div className='md:flex md:justify-center md:items-center lg:flex lg:justify-center lg:items-center flex justify-center items-center'>
                     <p className=' lg:text-sm text-[10px] text-[#475569]'>Sign In</p>
-                    <button className='bg-[#DB2777] rounded-3xl lg:py-2 lg:px-4 text-amber-50 lg:ml-4 md:ml-2 font-semibold px-2.5 py-1 ml-1 md:text-sm lg:text-sm text-[10px] ml-3'>Sign Up</button>
+                    <button className='bg-[#DB2777] rounded-3xl lg:py-2 lg:px-4 text-amber-50 lg:ml-4 md:ml-2 font-semibold px-2.5 py-1 md:text-sm lg:text-sm text-[10px] ml-3'>Sign Up</button>
                 </div>
             </div>
         </div>
