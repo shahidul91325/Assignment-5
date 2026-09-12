@@ -119,7 +119,8 @@ const SkillCard = ({ SkillData }: SkillProops) => {
               </div>
 
               {/* Button */}
-              <button
+              <div className='flex justify-center items-center'>
+                <button
                 onClick={() => handleAddClick(skill)}
                 disabled={isSelected}
                 type="button"
@@ -127,13 +128,14 @@ const SkillCard = ({ SkillData }: SkillProops) => {
               >
                 {isSelected ? '✓ Added To Stack' : 'Add To Stack'}
               </button>
+              </div>
             </div>
           );
         })}
       </div>
-       <div className="w-full mx-auto my-5 lg:sticky lg:top-20 lg:self-start lg:my-0 lg:w-[35%] lg:mx-0 flex justify-center items-center">
+       <div className="w-full mx-auto my-5 lg:sticky lg:top-20 lg:self-start lg:my-0 lg:w-[35%] lg:mx-0 lg:ml-10 lg:flex lg:justify-start flex justify-center items-center">
     
-    <div className="w-[80%] rounded-[28px] border border-slate-100 bg-white px-5 py-7 shadow-[0_3px_8px_rgba(15,23,42,0.08)] sm:px-7 sm:py-9 lg:px-10 lg:py-11">
+    <div className="w-[80%] lg:w-[65%] rounded-[28px] border border-slate-100 bg-white px-5 py-7 shadow-[0_3px_8px_rgba(15,23,42,0.08)] sm:px-7 sm:py-9 lg:px-10 lg:py-11">
 
       <h2 className="text-xl lg:text-lg font-bold leading-tight text-slate-900">
         Your Stack
