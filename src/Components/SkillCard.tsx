@@ -123,7 +123,7 @@ const SkillCard = ({ SkillData }: SkillProops) => {
                 onClick={() => handleAddClick(skill)}
                 disabled={isSelected}
                 type="button"
-                className={`lg:mt-8 lg:w-60 md:w-60 rounded-2xl lg:py-2 lg:text-sm font-medium text-white transition w-60 py-2 lg:ml-0 ml-10 mt-5 ${isSelected ? 'bg-linear-to-r from-[#e4400e] from-20%- via-[#F04145] via-30% to-[#4d0bc0] to-70%' : 'bg-black'}`}
+                className={`lg:mt-8 lg:w-60 md:w-60 rounded-2xl lg:py-2 lg:text-sm font-medium text-white transition w-60 py-2 lg:ml-0 mt-5 ${isSelected ? 'bg-linear-to-r from-[#e4400e] from-20%- via-[#F04145] via-30% to-[#4d0bc0] to-70%' : 'bg-black'}`}
               >
                 {isSelected ? '✓ Added To Stack' : 'Add To Stack'}
               </button>
@@ -131,55 +131,69 @@ const SkillCard = ({ SkillData }: SkillProops) => {
           );
         })}
       </div>
-      <div className="lg:w-[35%] lg:my-0 lg:ml-0 w-130 my-5 ml-20 sticky top-25 z-50 bg-white">
-        <div className="rounded-[28px] border border-slate-100 bg-white px-10 py-11 shadow-[0_3px_8px_rgba(15,23,42,0.08)] mr-30 ml-10">
-          <h2 className="text-xl lg:text-lg font-bold leading-tight text-slate-900">Your Stack</h2>
+       <div className="w-full mx-auto my-5 lg:sticky lg:top-20 lg:self-start lg:my-0 lg:w-[35%] lg:mx-0 flex justify-center items-center">
+    
+    <div className="w-[80%] rounded-[28px] border border-slate-100 bg-white px-5 py-7 shadow-[0_3px_8px_rgba(15,23,42,0.08)] sm:px-7 sm:py-9 lg:px-10 lg:py-11">
 
-          <p className="mt-3 text-sm font-normal text-slate-400">
-            {selectedSkill.length === 0
-              ? 'No technologies selected yet.'
-              : `${selectedSkill.length} Technology Selected`}
+      <h2 className="text-xl lg:text-lg font-bold leading-tight text-slate-900">
+        Your Stack
+      </h2>
+
+      <p className="mt-3 text-sm font-normal text-slate-400">
+        {selectedSkill.length === 0
+          ? "No technologies selected yet."
+          : `${selectedSkill.length} Technology Selected`}
+      </p>
+
+      {selectedSkill.length === 0 ? (
+        <div className="mt-7 flex h-30 items-center justify-center rounded-[22px] border-2 border-dashed border-slate-200">
+          <p className="text-sm text-slate-400">
+            Your stack is empty.
           </p>
+        </div>
+      ) : (
+        <div className="mt-7">
+          {selectedSkill.map((skill) => (
+            <div
+              key={skill.id}
+              className="mb-3 flex items-center justify-between rounded-xl border border-slate-200 p-3"
+            >
+              <div className="flex min-w-0 items-center gap-3">
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="h-8 w-8 shrink-0 object-contain"
+                />
 
-          {selectedSkill.length === 0 ? (
-            // Empty
-            <div className="mt-7 h-30 flex items-center justify-center rounded-[22px] border-2 border-dashed border-slate-200">
-              <p className="text-sm text-slate-400">Your stack is empty.</p>
-            </div>
-          ) : (
-            <div className="mt-7">
-              {selectedSkill.map((skill) => (
-                <div
-                  key={skill.id}
-                  className="mb-3 flex items-center justify-between rounded-xl border border-slate-200 p-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <img src={skill.icon} alt={skill.name} className="h-8 w-8 object-contain" />
+                <div className="min-w-0">
+                  <h3 className="truncate text-sm font-semibold text-slate-800">
+                    {skill.name}
+                  </h3>
 
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-800">{skill.name}</h3>
-
-                      <p className="text-[10px] text-slate-400">{skill.category}</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveSkill(skill.id, skill)}
-                    className="text-xl text-slate-400 hover:text-red-500"
-                  >
-                    ×
-                  </button>
+                  <p className="text-[10px] text-slate-400">
+                    {skill.category}
+                  </p>
                 </div>
-              ))}
+              </div>
 
               <button
                 type="button"
-                onClick={handleRemoveAll}
-                className="mt-5 w-full rounded-xl border border-red-300 py-2 text-sm font-medium text-red-500 hover:bg-red-50"
+                onClick={() => handleRemoveSkill(skill.id, skill)}
+                className="ml-3 shrink-0 text-xl text-slate-400 hover:text-red-500"
               >
-                Remove All
+                ×
               </button>
             </div>
+          ))}
+
+          <button
+            type="button"
+            onClick={handleRemoveAll}
+            className="mt-5 w-full rounded-xl border border-red-300 py-2 text-sm font-medium text-red-500 hover:bg-red-50"
+          >
+            Remove All
+          </button>
+        </div>
           )}
         </div>
       </div>

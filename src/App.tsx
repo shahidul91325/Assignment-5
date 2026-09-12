@@ -15,7 +15,7 @@ function App() {
   const SkillDataPromise = SkillDataFetch();
   return (
     <>
-      <div className='w-full max-w-full overflow-x-hidden'>
+      <div className='w-full max-w-full'>
         <Nav></Nav>
         <Hero></Hero>
         <Suspense fallback={<h1>Loading...</h1>}>

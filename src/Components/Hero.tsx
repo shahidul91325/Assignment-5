@@ -11,10 +11,12 @@ const Hero = () => {
             Explore frontend, backend, database, and tooling options,<br />compare them side by side, and put together the
             stack that fits your next project.
           </p>
-          <button className=' bg-linear-to-r from-[#F97316] - to-[#EC4899] px-3 py-3 text-white font-semibold rounded-xl lg:mr-8 mr-3'>Explore Technologies</button>
-          <button className='border border-gray-300 lg:px-15 lg:py-3 rounded-xl text-gray-700 lg:text-sm px-12 py-3'>Learn More</button>
+          <div className='flex flex-col justify-center items-center lg:flex lg:flex-row lg:justify-start lg:items-center'>
+            <button className=' bg-linear-to-r from-[#F97316] - to-[#EC4899] px-3 py-3 text-white font-semibold rounded-xl lg:mr-8 mb-5'>Explore Technologies</button>
+          <button className='border border-gray-300 lg:px-15 lg:py-3 rounded-xl text-gray-700 lg:text-sm px-13 py-3 '>Learn More</button>
+          </div>
         </div>
-        <div>
+        <div className='flex justify-center items-center'>
           <img src={banner} alt="" />
         </div>
       </div>
