@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import { use } from 'react';
 import type { ISkill } from '../Types/Skill-Data';
 import SkillCard from './SkillCard';
 export interface PromiseProops {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { ISkill } from '../Types/Skill-Data';
 import { Bounce, toast } from 'react-toastify';
 
